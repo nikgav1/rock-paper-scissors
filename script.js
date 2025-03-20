@@ -4,7 +4,7 @@ function humanChoice(){
 }
 function computerChoice(){
     let randNumber = Math.random()
-    if (randNumber < 0.333){
+    if (randNumber <= 0.333){
         return "Rock"
     }
     else if (randNumber > 0.333 && randNumber <=0.666){

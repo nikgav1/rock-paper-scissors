@@ -1,6 +1,6 @@
 let computerScore = 0;
 let humanScore = 0;
-const numberOfWins = 5;
+const numberOfWins = 3;
 
 function humanChoice(){
     let choice = prompt("Choose: Rock, Paper, Scissors!")
@@ -21,19 +21,21 @@ function computerChoice(){
 
 function roundHandler(humanChoice, computerChoice){
     if (humanChoice === computerChoice){
-        console.log(`Draw, ${humanScore} : ${computerScore}`)
+        alert(`Computer choice: ${computerChoice}. Draw, ${humanScore} : ${computerScore}`)
     } 
     else if (humanChoice === "Rock" && computerChoice === "Scissors" || humanChoice === "Paper" && computerChoice === "Rock" || humanChoice === "Scissors" && computerChoice === "Paper"){
         humanScore += 1;
-        console.log(`You won, ${humanScore} : ${computerScore}`)
+        alert(`Computer choice: ${computerChoice}. You won, ${humanScore} : ${computerScore}`)
     }
     else if (computerChoice === "Rock" && humanChoice === "Scissors" || computerChoice === "Paper" && humanChoice === "Rock" || computerChoice === "Scissors" && humanChoice === "Paper"){
         computerScore += 1;
-        console.log(`Computer won, ${humanScore} : ${computerScore}`)
+        alert(`Computer choice: ${computerChoice}. Computer won, ${humanScore} : ${computerScore}`)
     }
 }
-function gameHandler(){
-    if(humanScore != numberOfWins || computerScore != numberOfWins){
+
+function gameHandler(numberOfWins){
+    while(humanScore < numberOfWins && computerScore < numberOfWins){
         roundHandler(humanChoice(), computerChoice())
     }
 }
+gameHandler(numberOfWins)

@@ -42,6 +42,19 @@ function roundHandler(humanChoice, computerChoice){
         score.textContent = `${humanScore} : ${computerScore}`
     }
 }
+function newGame(){
+    humanScore = 0
+    computerScore = 0
+    score.textContent = `${humanScore} : ${computerScore}`
+}
+function newGameHandling(){
+    const newBtn = document.createElement("button")
+    newBtn.textContent = "New Game?"
+    score.appendChild(newBtn)
+    newBtn.addEventListener("click", () => {
+        newGame();
+    })
+}
 
 function gameHandler(numberOfWins){
     container.addEventListener("click", (e) =>{
@@ -51,7 +64,8 @@ function gameHandler(numberOfWins){
             roundHandler(humanSelection, computerSelection)
         }
         else{
-
+            score.textContent = `Game ended with score ${humanScore} : ${computerScore}`
+            newGameHandling();
         }
     })
 }

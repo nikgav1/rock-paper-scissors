@@ -1,22 +1,20 @@
 let computerScore = 0;
 let humanScore = 0;
-const numberOfWins = 3;
+const numberOfWins = 5;
 
 const container = document.getElementById("container")
 const score = document.getElementById("score")
 
-function humanChoice(){
-    container.addEventListener("click", (e) =>{
-        const target = e.target
-        switch (target.id) {
-            case "rock":
-                return "Rock"
-            case "paper":
-                return "Paper"
-            case "scissors":
-                return "Scissors"
-        }
-    })
+function humanChoice(e){
+    const target = e.target
+    switch (target.id) {
+        case "rock":
+            return "Rock"
+        case "paper":
+            return "Paper"
+        case "scissors":
+            return "Scissors"
+    }
 }
 function computerChoice(){
     let randNumber = Math.random()
@@ -46,8 +44,15 @@ function roundHandler(humanChoice, computerChoice){
 }
 
 function gameHandler(numberOfWins){
-    while(humanScore < numberOfWins && computerScore < numberOfWins){
-        roundHandler(humanChoice(), computerChoice())
-    }
+    container.addEventListener("click", (e) =>{
+        if(humanScore < numberOfWins && computerScore < numberOfWins){
+            const humanSelection = humanChoice(e)
+            const computerSelection = computerChoice()
+            roundHandler(humanSelection, computerSelection)
+        }
+        else{
+
+        }
+    })
 }
 gameHandler(numberOfWins)

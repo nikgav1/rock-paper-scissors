@@ -2,9 +2,20 @@ let computerScore = 0;
 let humanScore = 0;
 const numberOfWins = 3;
 
+const container = document.getElementById("container")
+
 function humanChoice(){
-    let choice = prompt("Choose: Rock, Paper, Scissors!")
-    return choice;
+    container.addEventListener("click", (e) =>{
+        const target = e.target
+        switch (target.id) {
+            case "rock":
+                return "Rock"
+            case "paper":
+                return "Paper"
+            case "scissors":
+                return "Scissors"
+        }
+    })
 }
 function computerChoice(){
     let randNumber = Math.random()
@@ -21,15 +32,15 @@ function computerChoice(){
 
 function roundHandler(humanChoice, computerChoice){
     if (humanChoice === computerChoice){
-        alert(`Computer choice: ${computerChoice}. Draw, ${humanScore} : ${computerScore}`)
+        
     } 
     else if (humanChoice === "Rock" && computerChoice === "Scissors" || humanChoice === "Paper" && computerChoice === "Rock" || humanChoice === "Scissors" && computerChoice === "Paper"){
         humanScore += 1;
-        alert(`Computer choice: ${computerChoice}. You won, ${humanScore} : ${computerScore}`)
+        
     }
     else if (computerChoice === "Rock" && humanChoice === "Scissors" || computerChoice === "Paper" && humanChoice === "Rock" || computerChoice === "Scissors" && humanChoice === "Paper"){
         computerScore += 1;
-        alert(`Computer choice: ${computerChoice}. Computer won, ${humanScore} : ${computerScore}`)
+        
     }
 }
 

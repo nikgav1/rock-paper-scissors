@@ -4,6 +4,7 @@ const numberOfWins = 5;
 
 const container = document.getElementById("container")
 const score = document.getElementById("score")
+const status = document.getElementById("status")
 
 function humanChoice(e){
     const target = e.target
@@ -32,14 +33,17 @@ function computerChoice(){
 function roundHandler(humanChoice, computerChoice){
     if (humanChoice === computerChoice){
         score.textContent = `${humanScore} : ${computerScore}`
+        status.textContent = `${computerChoice}! It is a tie!`;
     } 
     else if (humanChoice === "Rock" && computerChoice === "Scissors" || humanChoice === "Paper" && computerChoice === "Rock" || humanChoice === "Scissors" && computerChoice === "Paper"){
         humanScore += 1;
         score.textContent = `${humanScore} : ${computerScore}`
+        status.textContent = `${computerChoice}! You Won!`;
     }
     else if (computerChoice === "Rock" && humanChoice === "Scissors" || computerChoice === "Paper" && humanChoice === "Rock" || computerChoice === "Scissors" && humanChoice === "Paper"){
         computerScore += 1;
         score.textContent = `${humanScore} : ${computerScore}`
+        status.textContent = `${computerChoice}! You Lost!`;
     }
 }
 function newGame(){
